@@ -8,7 +8,7 @@
                 <div class="card-header"><?php echo e($questionnaire->title); ?></div>
 
                 <div class="card-body">
-                
+                    <a class="btn btn-dark" href="/questionnaires/<?php echo e($questionnaire->id); ?>/questions/create" >Add Question</a>
                 </div>
             </div>
         </div>

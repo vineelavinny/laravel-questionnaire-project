@@ -9,6 +9,6 @@ class Answer extends Model
     protected $guarded=[];
 
     public function question(){
-        return $this->belongTo(Question::class);
+        return $this->belongsTo(Question::class);
     }
 }

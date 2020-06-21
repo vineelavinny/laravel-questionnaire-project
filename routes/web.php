@@ -25,3 +25,5 @@ route::post('/questionnaires','QuestionnaireController@store');
 route::get('/questionnaires/{questionnaire}','QuestionnaireController@show');
 route::get('/questionnaires/{questionnaire}/questions/create','QuestionController@create');
 route::post('/questionnaires/{questionnaire}/questions','QuestionController@store');
+route::get('/survey/{questionnaire}-{slug}','SurveyController@show');
+route::post('/survey/{questionnaire}-{slug}','SurveyController@store');

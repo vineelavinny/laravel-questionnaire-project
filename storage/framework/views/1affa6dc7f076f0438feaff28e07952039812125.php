@@ -19,9 +19,21 @@
                 <div class="card-body">
                     <ul class="list-group">
                         <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li class="list-group-item"><?php echo e($answer->answer); ?></li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div><?php echo e($answer->answer); ?></div>
+                                <?php if($question->responses->count()): ?>
+                                <div><?php echo e(intval(($answer->responses->count()*100)/$question->responses->count())); ?>%</div>
+                                <?php endif; ?>
+                            </li>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
+                </div>
+                <div class="card-footer">
+                    <form action="/questionnaires/<?php echo e($questionnaire->id); ?>/questions/<?php echo e($question->id); ?>" method="post">
+                        <?php echo method_field('DELETE'); ?>
+                        <?php echo csrf_field(); ?>
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete Question</button> 
+                    </form>
                 </div>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -2,18 +2,29 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card ">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <?php if(session('status')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo e(session('status')); ?>
-
-                        </div>
-                    <?php endif; ?>
-
                     <a href="/questionnaires/create" class="btn btn-dark">Create New Questionnaires</a>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">My Questionnaires</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php $__currentLoopData = $questionnaries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $questionnarie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li class="list-group-item">
+                                <a href="<?php echo e($questionnarie->path()); ?>"><?php echo e($questionnarie->title); ?></a>
+                                <div class="mt-2">
+                                    <small class="font-weight-bold">Share URL</small>
+                                    <p>
+                                        <a href="<?php echo e($questionnarie->publicPath()); ?>"><?php echo e($questionnarie->publicPath()); ?></a>
+                                    </p>
+                                </div>
+                            </li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
                 </div>
             </div>
         </div>
